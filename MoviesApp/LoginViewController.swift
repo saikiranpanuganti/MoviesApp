@@ -26,13 +26,13 @@ class LoginViewController: UIViewController {
     }
     
     func addUnderLine() {
-        
         let text = forgetPasswdLabel.text
-          let textRange = NSRange(location: 0, length: (text?.count)!)
-          let attributedText = NSMutableAttributedString(string: text!)
+        let textRange = NSRange(location: 0, length: (text?.count)!)
+        let attributedText = NSMutableAttributedString(string: text!)
         attributedText.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: textRange)
         forgetPasswdLabel.attributedText = attributedText
-}
+    }
+    
     func configUI(){
         emailTextField.layer.borderWidth = 1
         passwordTextField.layer.borderWidth = 1
@@ -56,4 +56,7 @@ class LoginViewController: UIViewController {
         checkBoxStatus[sender.tag - 1] = !currentStatus
     }
 
+    @IBAction func backTapped() {
+        navigationController?.popViewController(animated: true)
+    }
 }

@@ -89,4 +89,8 @@ class RegisterViewController: UIViewController {
         }
         checkBoxImageStatus[sender.tag - 1] = !currentStatus
     }
+    
+    @IBAction func backTapped() {
+        navigationController?.popViewController(animated: true)
+    }
 }

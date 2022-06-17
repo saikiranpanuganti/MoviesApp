@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SettingTableViewCell" rowHeight="70" id="KGk-i7-Jjw" customClass="SettingTableViewCell" customModule="MoviesApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="fpU-9S-g2k">
+                        <rect key="frame" x="10" y="20.5" width="30" height="29"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="fpU-9S-g2k" secondAttribute="height" multiplier="1:1" id="B34-xl-1Uw"/>
+                            <constraint firstAttribute="width" constant="30" id="dul-q8-sm7"/>
+                        </constraints>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NTG-s7-N2D">
+                        <rect key="frame" x="52" y="20" width="50" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="NSh-Cz-LPp"/>
+                            <constraint firstAttribute="height" constant="30" id="fkf-sb-Nf7"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" title="Sign In"/>
+                        <connections>
+                            <action selector="loginTapped" destination="KGk-i7-Jjw" eventType="touchUpInside" id="A2s-lY-vhi"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="|" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vqH-BR-agz">
+                        <rect key="frame" x="102" y="20" width="5" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="5" id="5MR-Yq-ek2"/>
+                            <constraint firstAttribute="height" constant="30" id="Gyx-kJ-buo"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pap-IQ-4IZ">
+                        <rect key="frame" x="107" y="20" width="60" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="VMp-49-n45"/>
+                            <constraint firstAttribute="width" constant="60" id="pCa-Wp-uT6"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" title="Register"/>
+                        <connections>
+                            <action selector="registerTapped" destination="KGk-i7-Jjw" eventType="touchUpInside" id="J9u-m4-g2M"/>
+                        </connections>
+                    </button>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gearshape" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="jRA-tu-K3s">
+                        <rect key="frame" x="275" y="17.5" width="35" height="35"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="35" id="SGE-RB-a6v"/>
+                            <constraint firstAttribute="width" secondItem="jRA-tu-K3s" secondAttribute="height" multiplier="1:1" id="gA8-ty-bnS"/>
+                        </constraints>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QTm-wk-zAK">
+                        <rect key="frame" x="275" y="17.5" width="35" height="35"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <connections>
+                            <action selector="settingsTapped" destination="KGk-i7-Jjw" eventType="touchUpInside" id="A4J-RT-Nt1"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="QTm-wk-zAK" firstAttribute="centerY" secondItem="jRA-tu-K3s" secondAttribute="centerY" id="78K-e8-2Oi"/>
+                    <constraint firstItem="NTG-s7-N2D" firstAttribute="leading" secondItem="fpU-9S-g2k" secondAttribute="trailing" constant="12" id="ClT-BG-GHL"/>
+                    <constraint firstItem="NTG-s7-N2D" firstAttribute="centerY" secondItem="fpU-9S-g2k" secondAttribute="centerY" id="GYs-7E-3TR"/>
+                    <constraint firstItem="jRA-tu-K3s" firstAttribute="centerY" secondItem="fpU-9S-g2k" secondAttribute="centerY" id="N2t-dK-ENv"/>
+                    <constraint firstItem="fpU-9S-g2k" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="XKY-1G-KbV"/>
+                    <constraint firstItem="QTm-wk-zAK" firstAttribute="width" secondItem="jRA-tu-K3s" secondAttribute="width" id="Z6Y-Rr-P2h"/>
+                    <constraint firstItem="fpU-9S-g2k" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="ZVE-BN-yuH"/>
+                    <constraint firstItem="pap-IQ-4IZ" firstAttribute="leading" secondItem="vqH-BR-agz" secondAttribute="trailing" id="d4H-fz-txi"/>
+                    <constraint firstItem="vqH-BR-agz" firstAttribute="centerY" secondItem="fpU-9S-g2k" secondAttribute="centerY" id="dww-zp-dnt"/>
+                    <constraint firstItem="QTm-wk-zAK" firstAttribute="centerX" secondItem="jRA-tu-K3s" secondAttribute="centerX" id="ek4-AE-gox"/>
+                    <constraint firstItem="QTm-wk-zAK" firstAttribute="height" secondItem="jRA-tu-K3s" secondAttribute="height" id="f2e-ea-r9b"/>
+                    <constraint firstItem="pap-IQ-4IZ" firstAttribute="centerY" secondItem="fpU-9S-g2k" secondAttribute="centerY" id="mgx-Cm-gZz"/>
+                    <constraint firstItem="vqH-BR-agz" firstAttribute="leading" secondItem="NTG-s7-N2D" secondAttribute="trailing" id="neR-Rr-ReP"/>
+                    <constraint firstAttribute="trailing" secondItem="jRA-tu-K3s" secondAttribute="trailing" constant="10" id="nib-sx-ygG"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <point key="canvasLocation" x="137.68115942028987" y="108.48214285714285"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="gearshape" catalog="system" width="128" height="121"/>
+        <image name="person.circle" catalog="system" width="128" height="121"/>
+    </resources>
+</document>

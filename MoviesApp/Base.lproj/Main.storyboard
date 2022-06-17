@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IaF-0S-BIT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Vlg-35-J0t">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -18,14 +18,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qto-UZ-up9">
-                                <rect key="frame" x="-200" y="0.0" width="200" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="896"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="0Qz-cD-24B">
+                                        <rect key="frame" x="0.0" y="60" width="200" height="786"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableView>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="0Qz-cD-24B" firstAttribute="top" secondItem="qto-UZ-up9" secondAttribute="top" constant="60" id="1K9-jD-gde"/>
                                     <constraint firstAttribute="width" constant="200" id="5Jv-NT-qeh"/>
+                                    <constraint firstAttribute="bottom" secondItem="0Qz-cD-24B" secondAttribute="bottom" constant="50" id="FX8-es-Tbi"/>
+                                    <constraint firstAttribute="trailing" secondItem="0Qz-cD-24B" secondAttribute="trailing" id="uxs-BP-Cof"/>
+                                    <constraint firstItem="0Qz-cD-24B" firstAttribute="leading" secondItem="qto-UZ-up9" secondAttribute="leading" id="xBL-y8-Vuq"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cAB-Ce-mVf">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="200" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0YC-ux-ico">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
@@ -71,23 +81,26 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="qto-UZ-up9" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="BS7-tR-7cv"/>
-                            <constraint firstItem="qto-UZ-up9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="-200" id="BeO-Z0-Zvj"/>
+                            <constraint firstItem="qto-UZ-up9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="BeO-Z0-Zvj"/>
                             <constraint firstAttribute="bottom" secondItem="qto-UZ-up9" secondAttribute="bottom" id="QOT-Zg-QEa"/>
                             <constraint firstItem="cAB-Ce-mVf" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="XEO-GO-vLx"/>
                             <constraint firstItem="cAB-Ce-mVf" firstAttribute="leading" secondItem="qto-UZ-up9" secondAttribute="trailing" id="b8X-lu-FfC"/>
                             <constraint firstAttribute="bottom" secondItem="cAB-Ce-mVf" secondAttribute="bottom" id="sTa-YK-ZuR"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Abj-gz-eOU"/>
                     <connections>
                         <outlet property="homeView" destination="cAB-Ce-mVf" id="nJA-Bb-ZVJ"/>
                         <outlet property="homeViewWidth" destination="K6m-0F-Fok" id="f5G-12-VNT"/>
                         <outlet property="menuLeading" destination="BeO-Z0-Zvj" id="N2M-uu-VxK"/>
+                        <outlet property="menuTableView" destination="0Qz-cD-24B" id="U6Z-RM-AlG"/>
                         <outlet property="menuView" destination="qto-UZ-up9" id="RTp-u3-vv4"/>
+                        <outlet property="menuWidth" destination="5Jv-NT-qeh" id="DBi-Ot-qMN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="34.782608695652179" y="70.982142857142847"/>
+            <point key="canvasLocation" x="944.92753623188412" y="70.982142857142847"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="iOK-E2-MzQ">
@@ -108,11 +121,22 @@
                                             <constraint firstAttribute="width" constant="30" id="aav-6c-MZR"/>
                                         </constraints>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FGx-17-70K">
+                                        <rect key="frame" x="15" y="40" width="30" height="30"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <connections>
+                                            <action selector="backTapped" destination="IaF-0S-BIT" eventType="touchUpInside" id="vrv-OE-vz5"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.92941176889999999" green="0.42352938649999999" blue="0.1764705926" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
+                                    <constraint firstItem="FGx-17-70K" firstAttribute="height" secondItem="Cfb-dZ-1mf" secondAttribute="height" id="Ccs-yD-Elk"/>
+                                    <constraint firstItem="FGx-17-70K" firstAttribute="width" secondItem="Cfb-dZ-1mf" secondAttribute="width" id="K4R-j3-wY4"/>
                                     <constraint firstItem="Cfb-dZ-1mf" firstAttribute="top" secondItem="Zhw-lx-woo" secondAttribute="top" constant="40" id="NDG-K6-PR3"/>
+                                    <constraint firstItem="FGx-17-70K" firstAttribute="centerY" secondItem="Cfb-dZ-1mf" secondAttribute="centerY" id="XYl-6J-ygv"/>
                                     <constraint firstItem="Cfb-dZ-1mf" firstAttribute="leading" secondItem="Zhw-lx-woo" secondAttribute="leading" constant="15" id="Zdb-07-mUE"/>
+                                    <constraint firstItem="FGx-17-70K" firstAttribute="centerX" secondItem="Cfb-dZ-1mf" secondAttribute="centerX" id="lVb-uF-uGl"/>
                                     <constraint firstAttribute="height" constant="80" id="qdX-GW-veA"/>
                                 </constraints>
                             </view>
@@ -871,7 +895,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hPp-pW-Fml" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="808.69565217391312" y="70.982142857142847"/>
+            <point key="canvasLocation" x="1718.840579710145" y="70.982142857142847"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="jzL-qs-vrw">
@@ -895,6 +919,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lIe-93-K8g">
                                         <rect key="frame" x="10" y="40" width="30" height="30"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <connections>
+                                            <action selector="backTapped" destination="vL9-S1-szu" eventType="touchUpInside" id="caF-r9-2hZ"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" name="AppColor"/>
@@ -1264,13 +1291,31 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="786-fI-se9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1446.376811594203" y="70.982142857142847"/>
+            <point key="canvasLocation" x="2489.8550724637685" y="70.982142857142847"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="jcs-i2-A2H">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Vlg-35-J0t" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4fb-yF-1Qw">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="J0e-wi-96y"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zoo-hs-6c5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="123" y="71"/>
         </scene>
     </scenes>
     <resources>
         <image name="apple" width="17" height="20"/>
         <image name="checkBox" width="42.5" height="42.5"/>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="facebook" width="22" height="22"/>
         <image name="filemenu.and.cursorarrow.rtl" catalog="system" width="128" height="88"/>
         <image name="twitter" width="22" height="19.5"/>
