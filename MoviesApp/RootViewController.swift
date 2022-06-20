@@ -14,9 +14,13 @@ class RootViewController: UIViewController {
     @IBOutlet weak var menuLeading: NSLayoutConstraint!
     @IBOutlet weak var menuWidth: NSLayoutConstraint!
     @IBOutlet weak var menuTableView: UITableView!
+    @IBOutlet weak var homeTableView: UITableView!
+    @IBOutlet weak var homeTitle: UILabel!
     
     var isMenuOpen: Bool = false
     var menuData: [Menu] = []
+    var homeData: [Playlist] = []
+    var titleText: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +33,13 @@ class RootViewController: UIViewController {
         menuTableView.register(UINib(nibName: "MenuTableViewCell", bundle: nil), forCellReuseIdentifier: "MenuTableViewCell")
         menuTableView.dataSource = self
         menuTableView.delegate = self
+        
+        homeTableView.register(UINib(nibName: "CarousalTableViewCell", bundle: nil), forCellReuseIdentifier: "CarousalTableViewCell")
+        homeTableView.delegate = self
+        homeTableView.dataSource = self
+        
         getMenuData()
+        getHomeData(homeId: "62")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,30 +88,79 @@ class RootViewController: UIViewController {
             }
         }.resume()
     }
+    
+    func getHomeData(homeId: String) {
+        guard let url = URL(string: "https://n6lih99291.execute-api.ap-south-1.amazonaws.com/dev/home") else { return }
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "POST"
+        
+        var headers: [String: String] = [:]
+        headers["Authorization"] = "cf606825b8a045c1aae39f7fe39de7d7"
+        headers["Content-Type"] = "application/json"
+        
+        urlRequest.allHTTPHeaderFields = headers
+        
+        let body: [String: Any] = ["homeid" : homeId]
+        
+        if let bodyData = try? JSONSerialization.data(withJSONObject: body, options: .prettyPrinted) {
+            urlRequest.httpBody = bodyData
+        }
+        
+        URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+            if let data = data {
+                if let homeModel = try? JSONDecoder().decode(HomeModel.self, from: data) {
+                    print("HomeModel: ", homeModel.response?.data?.playlists?.count)
+                    self.homeData = homeModel.response?.data?.playlists ?? []
+                    self.titleText = homeModel.response?.data?.title ?? ""
+                    
+                    
+                    DispatchQueue.main.async {
+                        self.homeTitle.text = self.titleText
+                        self.homeTableView.reloadData()
+                    }
+                }
+            }
+        }.resume()
+    }
 }
 
 extension RootViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        if tableView == menuTableView {
+            return 2
+        }else {
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 1
+        if tableView == menuTableView {
+            if section == 0 {
+                return 1
+            }else {
+                return menuData.count
+            }
         }else {
-            return menuData.count
+            return homeData.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            if let cell = menuTableView.dequeueReusableCell(withIdentifier: "SettingTableViewCell", for: indexPath) as? SettingTableViewCell {
-                cell.delegate = self
-                return cell
+        if tableView == menuTableView {
+            if indexPath.section == 0 {
+                if let cell = menuTableView.dequeueReusableCell(withIdentifier: "SettingTableViewCell", for: indexPath) as? SettingTableViewCell {
+                    cell.delegate = self
+                    return cell
+                }
+            }else if indexPath.section == 1 {
+                if let cell = menuTableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell", for: indexPath) as? MenuTableViewCell {
+                    cell.configureUI(menu: menuData[indexPath.row])
+                    return cell
+                }
             }
-        }else if indexPath.section == 1 {
-            if let cell = menuTableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell", for: indexPath) as? MenuTableViewCell {
-                cell.configureUI(menu: menuData[indexPath.row])
+        }else {
+            if let cell = homeTableView.dequeueReusableCell(withIdentifier: "CarousalTableViewCell", for: indexPath) as? CarousalTableViewCell {
+                cell.configureUI(playlist: homeData[indexPath.row])
                 return cell
             }
         }
@@ -111,10 +170,14 @@ extension RootViewController: UITableViewDataSource {
 
 extension RootViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            return 60
+        if tableView == menuTableView {
+            if indexPath.section == 0 {
+                return 60
+            }else {
+                return 45
+            }
         }else {
-            return 45
+            return 250
         }
     }
 }

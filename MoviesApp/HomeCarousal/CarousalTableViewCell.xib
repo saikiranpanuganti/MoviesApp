@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CarousalTableViewCell" rowHeight="203" id="KGk-i7-Jjw" customClass="CarousalTableViewCell" customModule="MoviesApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="382" height="203"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="382" height="203"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJP-DK-Mhg">
+                        <rect key="frame" x="5" y="10" width="372" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="wId-el-MJH"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="IgX-k4-7xk">
+                        <rect key="frame" x="5" y="35" width="372" height="163"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7Qx-10-J4x">
+                            <size key="itemSize" width="128" height="128"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                    </collectionView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="IgX-k4-7xk" firstAttribute="top" secondItem="JJP-DK-Mhg" secondAttribute="bottom" constant="5" id="4rH-LI-gM1"/>
+                    <constraint firstItem="JJP-DK-Mhg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="9Dt-Mm-737"/>
+                    <constraint firstAttribute="trailing" secondItem="IgX-k4-7xk" secondAttribute="trailing" constant="5" id="SOX-uD-CtK"/>
+                    <constraint firstItem="JJP-DK-Mhg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="WB5-n0-58h"/>
+                    <constraint firstItem="IgX-k4-7xk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="f9g-vB-aBt"/>
+                    <constraint firstAttribute="trailing" secondItem="JJP-DK-Mhg" secondAttribute="trailing" constant="5" id="hpx-20-eh7"/>
+                    <constraint firstAttribute="bottom" secondItem="IgX-k4-7xk" secondAttribute="bottom" constant="5" id="xgO-Fa-Ghj"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="carousalCollectionView" destination="IgX-k4-7xk" id="ONe-1L-8C9"/>
+                <outlet property="carousalTitle" destination="JJP-DK-Mhg" id="Iqk-xi-DCx"/>
+            </connections>
+            <point key="canvasLocation" x="182.60869565217394" y="65.959821428571431"/>
+        </tableViewCell>
+    </objects>
+</document>
