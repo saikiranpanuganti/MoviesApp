@@ -31,6 +31,11 @@ class RootViewController: UIViewController {
         menuTableView.delegate = self
         getMenuData()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        menuLeading.constant = -menuViewWidth
+    }
 
     @IBAction func menuTapped() {
         if isMenuOpen {
