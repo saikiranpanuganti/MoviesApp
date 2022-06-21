@@ -20,7 +20,21 @@ class RootViewController: UIViewController {
     var isMenuOpen: Bool = false
     var menuData: [Menu] = []
     var homeData: [Playlist] = []
-    var titleText: String = ""
+    
+    var titleText: String = "" {
+        willSet {
+            print("title text old: ", titleText)
+        }
+        didSet {
+            print("title text new: ", titleText)
+            DispatchQueue.main.async {
+                self.homeTitle.text = self.titleText
+            }
+        }
+    }
+    
+    var allHomeData: [String: HomeData] = [:]
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +53,6 @@ class RootViewController: UIViewController {
         homeTableView.dataSource = self
         
         getMenuData()
-        getHomeData(homeId: "62")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -80,11 +93,13 @@ class RootViewController: UIViewController {
                 let menuModel = try? JSONDecoder().decode(MenuModel.self, from: data)
                 self.menuData = menuModel?.body?.data ?? []
                 
+                if let homeId = self.menuData[0].id {
+                    self.getHomeData(homeId: String(homeId))
+                }
+                
                 DispatchQueue.main.async {
                     self.menuTableView.reloadData()
                 }
-                
-                print("menu count", menuModel?.body?.data?.count)
             }
         }.resume()
     }
@@ -110,13 +125,19 @@ class RootViewController: UIViewController {
             if let data = data {
                 if let homeModel = try? JSONDecoder().decode(HomeModel.self, from: data) {
                     print("HomeModel: ", homeModel.response?.data?.playlists?.count)
+                    self.allHomeData[homeId] = homeModel.response?.data
+                    
                     self.homeData = homeModel.response?.data?.playlists ?? []
                     self.titleText = homeModel.response?.data?.title ?? ""
                     
                     
                     DispatchQueue.main.async {
-                        self.homeTitle.text = self.titleText
+//                        self.homeTitle.text = self.titleText
                         self.homeTableView.reloadData()
+                    }
+                }else {
+                    if let jsondata = try? JSONSerialization.jsonObject(with: data) {
+                        print(jsondata)
                     }
                 }
             }
@@ -177,7 +198,24 @@ extension RootViewController: UITableViewDelegate {
                 return 45
             }
         }else {
-            return 250
+            return 220
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView == menuTableView {
+            print("Selected menu item: ", menuData[indexPath.row].title)
+            if let id = menuData[indexPath.row].id {
+                menuTapped()
+                if let data = allHomeData[String(id)] {
+//                    homeTitle.text = data.title
+                    titleText = data.title ?? ""
+                    homeData = data.playlists ?? []
+                    homeTableView.reloadData()
+                }else {
+                    getHomeData(homeId: String(id))
+                }
+            }
         }
     }
 }

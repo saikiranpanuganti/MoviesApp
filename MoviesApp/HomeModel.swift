@@ -43,7 +43,7 @@ struct Playlist: Codable {
 // MARK: - Content
 struct Content: Codable {
     let id: Int?
-    let ageRating: AgeRating?
+    let ageRating: String?
     let videoID: String?
     let contentType: ContentType?
     let title: String?
@@ -56,16 +56,6 @@ struct Content: Codable {
         case contentType = "content_type"
         case title, imagery
     }
-}
-
-enum AgeRating: String, Codable {
-    case gÑGeneralAudiences = "G ñ General Audiences"
-    case nrNotRatedByMPAA = "NR - Not Rated by MPAA"
-    case pg13ÑParentsStronglyCautioned = "PG 13 ñ Parents Strongly Cautioned"
-    case pg15ParentsStronglyCautioned = "PG 15 - Parents Strongly Cautioned"
-    case pgÑParentalGuidanceSuggested = "PG ñ Parental Guidance Suggested"
-    case the15 = "15+"
-    case the18 = "18+"
 }
 
 enum ContentType: String, Codable {
