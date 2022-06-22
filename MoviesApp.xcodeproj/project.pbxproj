@@ -12,6 +12,8 @@
 		7F2A20F8285CC3FA00820609 /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F2A20F6285CC3FA00820609 /* MenuTableViewCell.xib */; };
 		7F2A20FC285CC45D00820609 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F2A20FA285CC45D00820609 /* SettingTableViewCell.swift */; };
 		7F2A20FD285CC45D00820609 /* SettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F2A20FB285CC45D00820609 /* SettingTableViewCell.xib */; };
+		7F62CD702863512100D344C8 /* SettingItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F62CD6E2863512100D344C8 /* SettingItemTableViewCell.swift */; };
+		7F62CD712863512100D344C8 /* SettingItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F62CD6F2863512100D344C8 /* SettingItemTableViewCell.xib */; };
 		7FA983242860ABC50029D472 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA983232860ABC50029D472 /* HomeModel.swift */; };
 		7FA983282860AFF00029D472 /* CarousalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA983262860AFF00029D472 /* CarousalTableViewCell.swift */; };
 		7FA983292860AFF00029D472 /* CarousalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FA983272860AFF00029D472 /* CarousalTableViewCell.xib */; };
@@ -37,6 +39,8 @@
 		7F2A20F6285CC3FA00820609 /* MenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuTableViewCell.xib; sourceTree = "<group>"; };
 		7F2A20FA285CC45D00820609 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		7F2A20FB285CC45D00820609 /* SettingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingTableViewCell.xib; sourceTree = "<group>"; };
+		7F62CD6E2863512100D344C8 /* SettingItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItemTableViewCell.swift; sourceTree = "<group>"; };
+		7F62CD6F2863512100D344C8 /* SettingItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingItemTableViewCell.xib; sourceTree = "<group>"; };
 		7FA983232860ABC50029D472 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		7FA983262860AFF00029D472 /* CarousalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarousalTableViewCell.swift; sourceTree = "<group>"; };
 		7FA983272860AFF00029D472 /* CarousalTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarousalTableViewCell.xib; sourceTree = "<group>"; };
@@ -94,6 +98,15 @@
 			path = SettingCell;
 			sourceTree = "<group>";
 		};
+		7F62CD6D2863510400D344C8 /* SettingItem */ = {
+			isa = PBXGroup;
+			children = (
+				7F62CD6E2863512100D344C8 /* SettingItemTableViewCell.swift */,
+				7F62CD6F2863512100D344C8 /* SettingItemTableViewCell.xib */,
+			);
+			path = SettingItem;
+			sourceTree = "<group>";
+		};
 		7FA983252860AFD40029D472 /* HomeCarousal */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +154,7 @@
 				7FC80325285B6C2D003133E5 /* RootViewController.swift */,
 				7FC80327285B6C3D003133E5 /* RegisterViewController.swift */,
 				7FC80329285B6C44003133E5 /* LoginViewController.swift */,
+				7F62CD6D2863510400D344C8 /* SettingItem */,
 				7FA9832A2860B1FC0029D472 /* ImageCell */,
 				7FA983252860AFD40029D472 /* HomeCarousal */,
 				7F2A20F9285CC44F00820609 /* SettingCell */,
@@ -159,7 +173,6 @@
 				23F1C57B388F59918AC00F65 /* Pods-MoviesApp.debug.xcconfig */,
 				39529D60C8D483F67E4E9F3A /* Pods-MoviesApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -228,6 +241,7 @@
 				7FC8031B285B62C1003133E5 /* Assets.xcassets in Resources */,
 				7FA9832E2860B2170029D472 /* ImageCollectionViewCell.xib in Resources */,
 				7F2A20F8285CC3FA00820609 /* MenuTableViewCell.xib in Resources */,
+				7F62CD712863512100D344C8 /* SettingItemTableViewCell.xib in Resources */,
 				7F2A20FD285CC45D00820609 /* SettingTableViewCell.xib in Resources */,
 				7FC80319285B62C0003133E5 /* Main.storyboard in Resources */,
 			);
@@ -284,6 +298,7 @@
 			files = (
 				7FC8032A285B6C44003133E5 /* LoginViewController.swift in Sources */,
 				7FC80328285B6C3D003133E5 /* RegisterViewController.swift in Sources */,
+				7F62CD702863512100D344C8 /* SettingItemTableViewCell.swift in Sources */,
 				7F2A20F7285CC3FA00820609 /* MenuTableViewCell.swift in Sources */,
 				7F2A20FC285CC45D00820609 /* SettingTableViewCell.swift in Sources */,
 				7FC80312285B62C0003133E5 /* AppDelegate.swift in Sources */,

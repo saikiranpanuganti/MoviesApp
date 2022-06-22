@@ -20,6 +20,7 @@ class RootViewController: UIViewController {
     var isMenuOpen: Bool = false
     var menuData: [Menu] = []
     var homeData: [Playlist] = []
+    var settingsData: [Setting] = []
     
     var titleText: String = "" {
         willSet {
@@ -34,6 +35,7 @@ class RootViewController: UIViewController {
     }
     
     var allHomeData: [String: HomeData] = [:]
+    var isSetting: Bool = false
     
 
     override func viewDidLoad() {
@@ -49,15 +51,30 @@ class RootViewController: UIViewController {
         menuTableView.delegate = self
         
         homeTableView.register(UINib(nibName: "CarousalTableViewCell", bundle: nil), forCellReuseIdentifier: "CarousalTableViewCell")
+        homeTableView.register(UINib(nibName: "SettingItemTableViewCell", bundle: nil), forCellReuseIdentifier: "SettingItemTableViewCell")
         homeTableView.delegate = self
         homeTableView.dataSource = self
         
         getMenuData()
+        createSettingsData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         menuLeading.constant = -menuViewWidth
+    }
+    
+    func createSettingsData() {
+        settingsData = []
+        
+        settingsData.append(Setting(title: "My Account", caption: "Sign in to access all features", settingType: .account))
+        
+        settingsData.append(Setting(title: "Terms Of Use", caption: "Read all about our terms of use", settingType: .termsofuse))
+        settingsData.append(Setting(title: "Contact Us", caption: "Want to contact us?", settingType: .contact))
+        settingsData.append(Setting(title: "About Us", caption: "Read useful information about the App", settingType: .aboutus))
+        settingsData.append(Setting(title: "My Activity", caption: "Manage all your activity", settingType: .myactivity))
+        settingsData.append(Setting(title: "Privacy Policy", caption: "Read all abou our privacy policy", settingType: .privacy))
+        settingsData.append(Setting(title: "Langauge", caption: "Change interface language", settingType: .langauge))
     }
 
     @IBAction func menuTapped() {
@@ -162,7 +179,11 @@ extension RootViewController: UITableViewDataSource {
                 return menuData.count
             }
         }else {
-            return homeData.count
+            if isSetting {
+                return settingsData.count
+            }else {
+                return homeData.count
+            }
         }
     }
     
@@ -180,9 +201,16 @@ extension RootViewController: UITableViewDataSource {
                 }
             }
         }else {
-            if let cell = homeTableView.dequeueReusableCell(withIdentifier: "CarousalTableViewCell", for: indexPath) as? CarousalTableViewCell {
-                cell.configureUI(playlist: homeData[indexPath.row])
-                return cell
+            if isSetting {
+                if let cell = homeTableView.dequeueReusableCell(withIdentifier: "SettingItemTableViewCell", for: indexPath) as? SettingItemTableViewCell {
+                    cell.configureUI(setting: settingsData[indexPath.row])
+                    return cell
+                }
+            }else {
+                if let cell = homeTableView.dequeueReusableCell(withIdentifier: "CarousalTableViewCell", for: indexPath) as? CarousalTableViewCell {
+                    cell.configureUI(playlist: homeData[indexPath.row])
+                    return cell
+                }
             }
         }
         return UITableViewCell()
@@ -198,7 +226,11 @@ extension RootViewController: UITableViewDelegate {
                 return 45
             }
         }else {
-            return 220
+            if isSetting {
+                return 70
+            }else {
+                return 220
+            }
         }
     }
     
@@ -206,6 +238,7 @@ extension RootViewController: UITableViewDelegate {
         if tableView == menuTableView {
             print("Selected menu item: ", menuData[indexPath.row].title)
             if let id = menuData[indexPath.row].id {
+                isSetting = false
                 menuTapped()
                 if let data = allHomeData[String(id)] {
 //                    homeTitle.text = data.title
@@ -214,6 +247,25 @@ extension RootViewController: UITableViewDelegate {
                     homeTableView.reloadData()
                 }else {
                     getHomeData(homeId: String(id))
+                }
+            }
+        }else {
+            if isSetting {
+                if settingsData[indexPath.row].settingType == .account {
+                    SettingType.account.selectedSettingItem()
+                    print(SettingType.account.rawValue)
+                }else if settingsData[indexPath.row].settingType == .langauge {
+                    SettingType.langauge.selectedSettingItem()
+                }else if settingsData[indexPath.row].settingType == .termsofuse {
+                    SettingType.termsofuse.selectedSettingItem()
+                }else if settingsData[indexPath.row].settingType == .contact {
+                    SettingType.contact.selectedSettingItem()
+                }else if settingsData[indexPath.row].settingType == .aboutus {
+                    SettingType.aboutus.selectedSettingItem()
+                }else if settingsData[indexPath.row].settingType == .myactivity {
+                    SettingType.myactivity.selectedSettingItem()
+                }else if settingsData[indexPath.row].settingType == .privacy {
+                    SettingType.privacy.selectedSettingItem()
                 }
             }
         }
@@ -236,5 +288,18 @@ extension RootViewController: SettingTableViewCellDelegate {
     
     func settingsTapped() {
         print("settingsTapped")
+        isSetting = true
+        menuTapped()
+        homeTableView.reloadData()
     }
 }
+
+
+// User selected Account
+// User selected Language option
+// User selected Terms of Use item
+// User selected contact
+// User selected about
+// User selected activity
+// User selected privacy policy
+

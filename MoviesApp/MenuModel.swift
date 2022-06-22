@@ -31,3 +31,40 @@ struct Menu: Codable {
         case title, type
     }
 }
+
+
+struct Setting {
+    let title: String?
+    let caption: String?
+    let settingType: SettingType?
+}
+
+
+enum SettingType: Int {
+    case account = 30
+    case langauge = 32
+    case myactivity
+    case termsofuse
+    case privacy
+    case contact
+    case aboutus
+    
+    func selectedSettingItem() {
+        switch self {
+        case .account:
+            print("Going to account")
+        case .langauge:
+            print("Going to language")
+        case .myactivity:
+            print("Going to my activity")
+        case .termsofuse:
+            print("Going to terms of use")
+        case .privacy:
+            print("Going to privacy")
+        case .contact:
+            print("Going to contact")
+        case .aboutus:
+            print("Going to about us")
+        }
+    }
+}
