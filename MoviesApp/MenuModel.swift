@@ -23,12 +23,14 @@ struct MenuBody: Codable {
 struct Menu: Codable {
     let id: Int?
     let friendlyURL, seoDescription, title, type: String?
+    var isSelected: Bool? = false
 
     enum CodingKeys: String, CodingKey {
         case id
         case friendlyURL = "friendly_url"
         case seoDescription = "seo_description"
         case title, type
+        case isSelected
     }
 }
 

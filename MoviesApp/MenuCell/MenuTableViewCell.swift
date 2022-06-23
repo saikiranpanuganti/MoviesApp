@@ -17,5 +17,11 @@ class MenuTableViewCell: UITableViewCell {
     
     func configureUI(menu: Menu?) {
         menuTitle.text = menu?.title
+        
+        if menu?.isSelected ?? false {
+            menuTitle.textColor = UIColor.orange
+        }else {
+            menuTitle.textColor = UIColor.white
+        }
     }
 }

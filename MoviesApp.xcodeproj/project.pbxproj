@@ -19,6 +19,8 @@
 		7FA983292860AFF00029D472 /* CarousalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FA983272860AFF00029D472 /* CarousalTableViewCell.xib */; };
 		7FA9832D2860B2170029D472 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA9832B2860B2170029D472 /* ImageCollectionViewCell.swift */; };
 		7FA9832E2860B2170029D472 /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FA9832C2860B2170029D472 /* ImageCollectionViewCell.xib */; };
+		7FBD0C2D28649D8100A2A40A /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBD0C2C28649D8100A2A40A /* SplashViewController.swift */; };
+		7FBD0C2F2864A63200A2A40A /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBD0C2E2864A63200A2A40A /* AppData.swift */; };
 		7FC80312285B62C0003133E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC80311285B62C0003133E5 /* AppDelegate.swift */; };
 		7FC80314285B62C0003133E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC80313285B62C0003133E5 /* SceneDelegate.swift */; };
 		7FC80319285B62C0003133E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FC80317285B62C0003133E5 /* Main.storyboard */; };
@@ -46,6 +48,8 @@
 		7FA983272860AFF00029D472 /* CarousalTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarousalTableViewCell.xib; sourceTree = "<group>"; };
 		7FA9832B2860B2170029D472 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		7FA9832C2860B2170029D472 /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
+		7FBD0C2C28649D8100A2A40A /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		7FBD0C2E2864A63200A2A40A /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
 		7FC8030E285B62C0003133E5 /* MoviesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FC80311285B62C0003133E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7FC80313285B62C0003133E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -151,9 +155,11 @@
 				7FC8032B285B6EEF003133E5 /* Constants.swift */,
 				7F2A20F2285CC33200820609 /* MenuModel.swift */,
 				7FA983232860ABC50029D472 /* HomeModel.swift */,
+				7FBD0C2E2864A63200A2A40A /* AppData.swift */,
 				7FC80325285B6C2D003133E5 /* RootViewController.swift */,
 				7FC80327285B6C3D003133E5 /* RegisterViewController.swift */,
 				7FC80329285B6C44003133E5 /* LoginViewController.swift */,
+				7FBD0C2C28649D8100A2A40A /* SplashViewController.swift */,
 				7F62CD6D2863510400D344C8 /* SettingItem */,
 				7FA9832A2860B1FC0029D472 /* ImageCell */,
 				7FA983252860AFD40029D472 /* HomeCarousal */,
@@ -301,6 +307,7 @@
 				7F62CD702863512100D344C8 /* SettingItemTableViewCell.swift in Sources */,
 				7F2A20F7285CC3FA00820609 /* MenuTableViewCell.swift in Sources */,
 				7F2A20FC285CC45D00820609 /* SettingTableViewCell.swift in Sources */,
+				7FBD0C2D28649D8100A2A40A /* SplashViewController.swift in Sources */,
 				7FC80312285B62C0003133E5 /* AppDelegate.swift in Sources */,
 				7FA983282860AFF00029D472 /* CarousalTableViewCell.swift in Sources */,
 				7FA9832D2860B2170029D472 /* ImageCollectionViewCell.swift in Sources */,
@@ -309,6 +316,7 @@
 				7FC80326285B6C2D003133E5 /* RootViewController.swift in Sources */,
 				7FA983242860ABC50029D472 /* HomeModel.swift in Sources */,
 				7FC80314285B62C0003133E5 /* SceneDelegate.swift in Sources */,
+				7FBD0C2F2864A63200A2A40A /* AppData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

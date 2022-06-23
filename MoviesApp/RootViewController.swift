@@ -18,8 +18,6 @@ class RootViewController: UIViewController {
     @IBOutlet weak var homeTitle: UILabel!
     
     var isMenuOpen: Bool = false
-    var menuData: [Menu] = []
-    var homeData: [Playlist] = []
     var settingsData: [Setting] = []
     
     var titleText: String = "" {
@@ -34,7 +32,6 @@ class RootViewController: UIViewController {
         }
     }
     
-    var allHomeData: [String: HomeData] = [:]
     var isSetting: Bool = false
     
 
@@ -55,7 +52,6 @@ class RootViewController: UIViewController {
         homeTableView.delegate = self
         homeTableView.dataSource = self
         
-        getMenuData()
         createSettingsData()
     }
     
@@ -108,9 +104,9 @@ class RootViewController: UIViewController {
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             if let data = data {
                 let menuModel = try? JSONDecoder().decode(MenuModel.self, from: data)
-                self.menuData = menuModel?.body?.data ?? []
+                AppData.shared.menuData = menuModel?.body?.data ?? []
                 
-                if let homeId = self.menuData[0].id {
+                if let homeId = AppData.shared.menuData[0].id {
                     self.getHomeData(homeId: String(homeId))
                 }
                 
@@ -142,9 +138,9 @@ class RootViewController: UIViewController {
             if let data = data {
                 if let homeModel = try? JSONDecoder().decode(HomeModel.self, from: data) {
                     print("HomeModel: ", homeModel.response?.data?.playlists?.count)
-                    self.allHomeData[homeId] = homeModel.response?.data
+                    AppData.shared.allHomeData[homeId] = homeModel.response?.data
                     
-                    self.homeData = homeModel.response?.data?.playlists ?? []
+                    AppData.shared.homeData = homeModel.response?.data?.playlists ?? []
                     self.titleText = homeModel.response?.data?.title ?? ""
                     
                     
@@ -176,13 +172,13 @@ extension RootViewController: UITableViewDataSource {
             if section == 0 {
                 return 1
             }else {
-                return menuData.count
+                return AppData.shared.menuData.count
             }
         }else {
             if isSetting {
                 return settingsData.count
             }else {
-                return homeData.count
+                return AppData.shared.homeData.count
             }
         }
     }
@@ -196,7 +192,7 @@ extension RootViewController: UITableViewDataSource {
                 }
             }else if indexPath.section == 1 {
                 if let cell = menuTableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell", for: indexPath) as? MenuTableViewCell {
-                    cell.configureUI(menu: menuData[indexPath.row])
+                    cell.configureUI(menu: AppData.shared.menuData[indexPath.row])
                     return cell
                 }
             }
@@ -208,7 +204,7 @@ extension RootViewController: UITableViewDataSource {
                 }
             }else {
                 if let cell = homeTableView.dequeueReusableCell(withIdentifier: "CarousalTableViewCell", for: indexPath) as? CarousalTableViewCell {
-                    cell.configureUI(playlist: homeData[indexPath.row])
+                    cell.configureUI(playlist: AppData.shared.homeData[indexPath.row])
                     return cell
                 }
             }
@@ -236,14 +232,24 @@ extension RootViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == menuTableView {
-            print("Selected menu item: ", menuData[indexPath.row].title)
-            if let id = menuData[indexPath.row].id {
+            print("Selected menu item: ", AppData.shared.menuData[indexPath.row].title)
+            if let id = AppData.shared.menuData[indexPath.row].id {
+                for i in 0..<AppData.shared.menuData.count {
+                    if i == indexPath.row {
+                        AppData.shared.menuData[i].isSelected = true
+                    }else {
+                        AppData.shared.menuData[i].isSelected = false
+                    }
+                }
+                
+                menuTableView.reloadData()
+                
                 isSetting = false
                 menuTapped()
-                if let data = allHomeData[String(id)] {
+                if let data = AppData.shared.allHomeData[String(id)] {
 //                    homeTitle.text = data.title
                     titleText = data.title ?? ""
-                    homeData = data.playlists ?? []
+                    AppData.shared.homeData = data.playlists ?? []
                     homeTableView.reloadData()
                 }else {
                     getHomeData(homeId: String(id))

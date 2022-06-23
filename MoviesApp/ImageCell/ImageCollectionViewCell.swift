@@ -22,6 +22,8 @@ class ImageCollectionViewCell: UICollectionViewCell {
         guard let url = URL(string: content?.imagery?.featuredImg ?? "") else { return }
         
         image.sd_setImage(with: url, placeholderImage: UIImage(named: ""))
+        
+        let dummtValue = UserDefaults.standard.value(forKey: "dummy")
     }
 
 }
